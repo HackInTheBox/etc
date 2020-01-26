@@ -3,11 +3,6 @@
 
 sudo apt update
 sudo apt install openssh-server
-host_name=$(hostname)
-keyfile="$HOME/.ssh/id_rsa_$host_name"
-echo "$keyfile" | ssh-keygen -t rsa -b 4096
-cat "${keyfile}.pub" >> $HOME/.ssh/authorized_keys
-chmod 600 $HOME/.ssh/authorized_keys
 
 make_backups() {
    if [ -f /etc/ssh/ssh_config ]; then
@@ -40,6 +35,14 @@ copy_over(){
 }
 
 copy_over
+
+host_name=$(hostname)
+keyfile="$HOME/.ssh/id_rsa_$host_name"
+echo "$keyfile" | ssh-keygen -t rsa -b 4096
+cat "${keyfile}.pub" >> $HOME/.ssh/authorized_keys
+chmod 600 $HOME/.ssh/authorized_keys
+
+
 
 sudo ufw allow openssh
 sudo systemctl start sshd
