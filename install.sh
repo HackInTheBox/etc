@@ -28,8 +28,10 @@ make_backups() {
 }
 make_backups
 copy_over(){
-   sudo cp $HOME/git/etc/etc/ssh/ssh_config /etc/ssh/ssh_config
-   sudo cp $HOME/git/etc/etc/ssh/sshd_config /etc/ssh/sshd_config
+   sudo su
+   cp $HOME/git/etc/etc/ssh/ssh_config /etc/ssh/ssh_config
+   cp $HOME/git/etc/etc/ssh/sshd_config /etc/ssh/sshd_config
+   sudo -u $USER
    cp $HOME/git/etc/home/user/.ssh/config $HOME/.ssh/config
    cp $HOME/git/etc/home/user/.ssh/authorized_keys $HOME/.ssh/authorized_keys
    cp -r $HOME/git/etc/home/user/.ssh/public_keys $HOME/.ssh/public_keys
@@ -38,5 +40,5 @@ copy_over(){
 
 copy_over
 
-sudo ufw allow openssh-server
+sudo ufw allow openssh
 sudo systemctl start sshd
