@@ -4,6 +4,7 @@
 sudo apt update
 sudo apt install openssh-server
 
+
 make_backups() {
    if [ -f /etc/ssh/ssh_config ]; then
       sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config.old
@@ -11,6 +12,10 @@ make_backups() {
    if [ -f /etc/ssh/sshd_config ]; then
       sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.old
    fi
+
+   mkdir -p $HOME/.ssh
+   mkdir -p $HOME/.ssh/public_keys
+
    if [ -f $HOME/.ssh/config ]; then
       cp $HOME/.ssh/config $HOME/.ssh/config.old
    fi
