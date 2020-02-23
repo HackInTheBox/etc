@@ -89,7 +89,7 @@ start_service() {
 }
 ### SCRIPT STARTS HERE
 echo "Installing from this script will DELETE any inital SSH settings."
-   read -p "Press Y to continue" response
+   read -p "Press Y to continue: " response
    
    case $response in
       y|Y)
@@ -99,10 +99,11 @@ echo "Installing from this script will DELETE any inital SSH settings."
          copy_over
          create_id
          start_service
-         
+         ;;
       *)
          echo "Exiting..."
          exit
+         ;;
    esac
 
 
