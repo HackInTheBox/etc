@@ -41,7 +41,7 @@ install_ssh() {
 create_id() {
    #Create public/private key pair
    echo "Hint: Press ONLY <enter> when prompted for password!"
-   echo "$HOME/.ssh/${keyfile}.pub" | ssh-keygen -t rsa -b 4096
+   echo "$HOME/.ssh/${keyfile}" | ssh-keygen -t rsa -b 4096
    cp "$HOME/.ssh/${keyfile}.pub" "$member_path/${keyfile}.pub"
    #Create domain_member config file
    if [ -f ${member_path}/${host_name}.config ]; then
