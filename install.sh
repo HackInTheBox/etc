@@ -58,9 +58,10 @@ create_id() {
    for i in *.config; do
    cat "$i" >> $HOME/.ssh/config
    echo "" >> $HOME/.ssh/config
+   done
    cat $HOME/git/etc/openssh-server/config >> $HOME/.ssh/config
    echo "   IdentityFile $HOME/.ssh/${keyfile}" >> $HOME/.ssh/config
-   done
+   
    #Create authorized keys file
    cd $member_path
    if [ -f authorized_keys ]; then
