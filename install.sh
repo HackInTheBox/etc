@@ -63,10 +63,11 @@ create_id() {
    echo "   IdentityFile $HOME/.ssh/${keyfile}" >> $HOME/.ssh/config
    
    #Create authorized keys file
-   cd $member_path
+   cd $HOME/.ssh
    if [ -f authorized_keys ]; then
       rm -f authorized_keys
    fi
+   cd $member_path
    for i in *.pub; do
       cat "$i" >> $HOME/.ssh/authorized_keys
    done
