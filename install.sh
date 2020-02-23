@@ -28,6 +28,7 @@ mainuser=$USER
 copy_over(){
    sudo cp $HOME/git/etc/openssh-server/ssh_config /etc/ssh/ssh_config
    sudo cp $HOME/git/etc/openssh-server/sshd_config /etc/ssh/sshd_config
+   mkdir -p $HOME/.ssh/domain_members
    cp -r $HOME/git/etc/openssh-server/domain_members $HOME/.ssh/
 }
 
